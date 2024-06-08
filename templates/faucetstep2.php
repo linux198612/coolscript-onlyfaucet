@@ -5,6 +5,7 @@ include("header.php");
 
 
 echo '<div class="text-center"><h1>Faucet -> STEP 2</h1></div>';
+echo '<div class="container text-center">';
 ?>
 
 <div class="text-center">
@@ -85,7 +86,7 @@ echo '<div class="text-center"><h1>Faucet -> STEP 2</h1></div>';
 <!-- Advertise here  -->
 </div>
 </div>
-
+</div>
 
 <div class="text-center">
 <!-- Advertise here  -->
