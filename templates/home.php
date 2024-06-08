@@ -130,7 +130,7 @@ if(isset($_POST['address'])){
             color: white;
             padding: 30px;
             margin: 20px auto;
-            width: 75%;
+            width: 50%;
             border-radius: 10px;
             text-align: center;
         }
