@@ -80,31 +80,31 @@ $balance = $user['balance'];
 
 
 
-// function updateUserLevelAndXP($userId, $xpThreshold, $maxLevel) {
-//     global $mysqli;
+ function updateUserLevelAndXP($userId, $xpThreshold, $maxLevel) {
+     global $mysqli;
 
-//     // Fetch the user's current XP
-//     $user = $mysqli->query("SELECT * FROM users WHERE id = '$userId'")->fetch_assoc();
-//     $currentXP = $user['xp'];
-//     $currentLevel = $user['level'];
+     // Fetch the user's current XP
+     $user = $mysqli->query("SELECT * FROM users WHERE id = '$userId'")->fetch_assoc();
+     $currentXP = $user['xp'];
+     $currentLevel = $user['level'];
 
-//     // Calculate the new level based on the current XP
-//     $newLevel = floor($currentXP / $xpThreshold);
+     // Calculate the new level based on the current XP
+     $newLevel = floor($currentXP / $xpThreshold);
 
-//     // Ensure the user doesn't exceed the maximum level
-//     if ($newLevel > $maxLevel) {
-//         $newLevel = $maxLevel;
-//     }
+     // Ensure the user doesn't exceed the maximum level
+     if ($newLevel > $maxLevel) {
+         $newLevel = $maxLevel;
+     }
 
-//     // Update the user's level, XP, and lvlreward
-//     $mysqli->query("UPDATE users SET level = '$newLevel', xp = '$currentXP' WHERE id = '$userId'");
+     // Update the user's level, XP, and lvlreward
+     $mysqli->query("UPDATE users SET level = '$newLevel', xp = '$currentXP' WHERE id = '$userId'");
 
-//     return true; // User's level and XP updated
-// }
+     return true; // User's level and XP updated
+ }
 
-// $xpThreshold = 100; // XP required for each level up
-// $maxLevel = 200; // Maximum level
-// updateUserLevelAndXP($user['id'], $xpThreshold, $maxLevel);
+ $xpThreshold = 50; // XP required for each level up
+ $maxLevel = 2000; // Maximum level
+ updateUserLevelAndXP($user['id'], $xpThreshold, $maxLevel);
 
 // // Például csökkentjük a felhasználó XP-jét az adatbázisból kinyert érték alapján
 // $userId = $user['id'];
@@ -122,13 +122,13 @@ $balance = $user['balance'];
 // }
 
 
-// $xpreward = 1;
+$xpreward = 1;
 
 
 
 /*
 Site version information:
 */
-$version = "1.00";
+$version = "1.01";
 
 ?>
