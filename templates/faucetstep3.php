@@ -43,7 +43,7 @@ if($_GET['c'] == "1"){
                 $mysqli->query("UPDATE settings SET value = value + 1 WHERE name = 'total_claims'");
 
                 echo "<div class='alert alert-info'>You've claimed successfully {$payOut} {$faucetCurrencies[$websiteCurrency][1]} + {$bonusPayOut} {$faucetCurrencies[$websiteCurrency][1]} Bonus.</div>";
-				echo "<a href='index.php?page=dashboard' class='btn btn-dark btn-lg'>Back Home</a>";
+				echo "<a href='index.php?page=dashboard' class='btn btn-dark btn-lg'>Back Home</a><br>";
 				
                 $referralPercent = $mysqli->query("SELECT value FROM settings WHERE name = 'referral_percent' LIMIT 1")->fetch_assoc()['value'];
                 $findReferralQuery = $mysqli->query("SELECT referred_by FROM users WHERE id = '{$user['id']}'");
