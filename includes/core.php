@@ -129,6 +129,6 @@ $xpreward = 1;
 /*
 Site version information:
 */
-$version = "1.01";
+$version = "1.02";
 
 ?>

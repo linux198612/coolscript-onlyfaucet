@@ -215,8 +215,8 @@ if(isset($_POST['address'])){
         // Dummy data for demonstration
         $userCount = $mysqli->query("SELECT COUNT(id) FROM users")->fetch_row()[0];
         $totalClaims = $mysqli->query("SELECT value FROM settings WHERE name = 'total_claims' LIMIT 1")->fetch_assoc()['value'];
-        $totalWithdrawn = $mysqli->query("SELECT value FROM settings WHERE name = 'total_withdraw' LIMIT 1")->fetch_assoc()['value'];
-
+        $totalWithdrawn = $mysqli->query("SELECT SUM(amount) FROM withdraw_history")->fetch_row()[0];
+		
         echo '<div class="col-md-4">';
         echo "<p><strong>Total registered users:<br></strong> $userCount</p>";
         echo '</div>';

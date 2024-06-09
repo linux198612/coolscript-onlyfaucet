@@ -77,7 +77,7 @@ include("header.php");
 
                                             $mysqli->query("INSERT INTO withdraw_history (userid, address, amount, txid, timestamp) VALUES ('{$user['id']}', '{$user['address']}', '{$user['balance']}', '$TxID', UNIX_TIMESTAMP(NOW()))");
                                                 echo "Successful payment: " . $balance . " ZER";
-                                                $mysqli->query("UPDATE settings SET value = value + $balance WHERE name = 'total_withdraw'");
+                                                
 
                                         } else {
                                             echo "Error---";

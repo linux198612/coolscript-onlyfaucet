@@ -36,8 +36,7 @@ INSERT INTO `settings` (`id`, `name`, `value`) VALUES
 (27, 'hcaptcha_sec_key', ''), 
 (28, 'faucet_currency', 'Zerocoin'),
 (31, 'level_system', 'off'),
-(32, 'total_claims', '0'),
-(33, 'total_withdraw', '0');
+(32, 'total_claims', '0');
 
 CREATE TABLE IF NOT EXISTS `white_list` (
   `id` int(32) UNSIGNED NOT NULL AUTO_INCREMENT,
