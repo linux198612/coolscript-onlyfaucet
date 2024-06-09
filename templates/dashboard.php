@@ -4,7 +4,7 @@ include("header.php");
 if($levelStatus == "on"){
 $currentLevel = $user['level'];
 $currentXP = $user['xp'];
-$bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonuslevepup' LIMIT 1")->fetch_assoc()['value'];
+$bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonuslevelvalue' LIMIT 1")->fetch_assoc()['value'];
 $bonusPercentage = $currentLevel * $bonusValue;
 }
 ?>

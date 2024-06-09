@@ -64,6 +64,8 @@ if(isset($_POST['address'])){
         }
     }
 }
+
+$bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonuslevelvalue' LIMIT 1")->fetch_assoc()['value'];
 ?>
 
 <!DOCTYPE html>
@@ -171,6 +173,25 @@ if(isset($_POST['address'])){
             padding: 10px;
             text-align: center;
         }
+		
+        .promo-section {
+            background-color: #004d40;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .promo-section h2 {
+            margin-bottom: 20px;
+        }
+        .promo-section .card {
+            margin-bottom: 20px;
+        }
+        .promo-section .btn {
+            background-color: #26a69a;
+            border: none;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -205,7 +226,35 @@ if(isset($_POST['address'])){
         </form>
     </div>
 
-
+    <div class="container promo-section">
+        <h2>Why Use Our Site?</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <h4 class="card-title">Maximize Your Earnings</h4>
+                        <p class="card-text">The more you collect, the more you earn. With each level you climb, your faucet rewards increase. Start now and watch your rewards grow!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <h4 class="card-title">Level Up for Bigger Rewards</h4>
+                        <p class="card-text">Each level unlocks a higher bonus. At level 0, you start with no bonus. Gain an additional <?php echo $bonusValue; ?>% bonus with each level up. Keep leveling up!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <h4 class="card-title">Join Our Community</h4>
+                        <p class="card-text">Be a part of our growing community. Share tips, earn referrals, and enjoy the benefits of being a valued member. Earn more by inviting friends!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="container">
