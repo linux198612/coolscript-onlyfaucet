@@ -115,6 +115,6 @@ $xpreward = $mysqli->query("SELECT value FROM settings WHERE name = 'xpreward' L
 /*
 Site version information:
 */
-$version = "1.02";
+$version = "1.03";
 
 ?>
