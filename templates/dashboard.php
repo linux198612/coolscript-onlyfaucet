@@ -35,7 +35,7 @@ $bonusPercentage = $currentLevel * $bonusValue;
                             echo '</div>';
 							}
 
-							echo "Level bonus: " . $bonusPercentage . "%";
+							echo "Faucet bonus: " . $bonusPercentage . "%";
 		}
 		?>		
         </div>
