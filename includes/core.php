@@ -77,8 +77,9 @@ function formatAmount($amount) {
 
 $balance = $user['balance'];
 
+$levelStatus = $mysqli->query("SELECT value FROM settings WHERE name = 'level_system' LIMIT 1")->fetch_assoc()['value'];
 
-
+if($levelStatus == "on"){
 
  function updateUserLevelAndXP($userId, $xpThreshold, $maxLevel) {
      global $mysqli;
@@ -102,29 +103,14 @@ $balance = $user['balance'];
      return true; // User's level and XP updated
  }
 
- $xpThreshold = 50; // XP required for each level up
- $maxLevel = 2000; // Maximum level
+ $xpThreshold = $mysqli->query("SELECT value FROM settings WHERE name = 'bonuxlevelxp' LIMIT 1")->fetch_assoc()['value'];
+ $maxLevel = $mysqli->query("SELECT value FROM settings WHERE name = 'bonusmaxlevel' LIMIT 1")->fetch_assoc()['value'];
  updateUserLevelAndXP($user['id'], $xpThreshold, $maxLevel);
 
-// // Például csökkentjük a felhasználó XP-jét az adatbázisból kinyert érték alapján
-// $userId = $user['id'];
 
-// // SQL lekérdezés az új XP lekérdezéséhez az adatbázisból
-// $newXPQuery = $mysqli->query("SELECT xp FROM users WHERE id = '$userId'");
-// $newXPData = $newXPQuery->fetch_assoc();
-// $newXP = $newXPData['xp'];
+$xpreward = $mysqli->query("SELECT value FROM settings WHERE name = 'xpreward' LIMIT 1")->fetch_assoc()['value'];
 
-// if ($newXP < $user['xp']) {
-//     // Ha az új XP kevesebb, akkor frissítjük a felhasználó szintjét és XP-jét
-//     updateUserLevelAndXP($userId, $xpThreshold, $maxLevel);
-
-//     // Most a felhasználó szintje és XP-je a helyes értékeket fogja tartalmazni
-// }
-
-
-$xpreward = 1;
-
-
+}
 
 /*
 Site version information:

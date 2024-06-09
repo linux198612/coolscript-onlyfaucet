@@ -36,7 +36,11 @@ INSERT INTO `settings` (`id`, `name`, `value`) VALUES
 (27, 'hcaptcha_sec_key', ''), 
 (28, 'faucet_currency', 'Zerocoin'),
 (31, 'level_system', 'off'),
-(32, 'total_claims', '0');
+(32, 'total_claims', '0'),
+(33, 'bonusmaxlevel', ''),
+(34, 'bonuxlevelxp', ''),
+(35, 'bonuslevelvalue', ''),
+(36, 'xpreward', '1');
 
 CREATE TABLE IF NOT EXISTS `white_list` (
   `id` int(32) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -78,5 +82,4 @@ CREATE TABLE IF NOT EXISTS `withdraw_history` (
   `timestamp` int(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 

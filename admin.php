@@ -120,8 +120,11 @@ if (!isset($_SESSION['admin_username'])) {
                 <li class="nav-item <?php echo ($page == 'basesettings') ? 'active' : ''; ?>">
                     <a class="nav-link" href="admin.php?page=basesettings">Base settings</a>
                 </li>
-				<li class="nav-item <?php echo ($page == 'basesettings') ? 'active' : ''; ?>">
+				<li class="nav-item <?php echo ($page == 'faucet') ? 'active' : ''; ?>">
                     <a class="nav-link" href="admin.php?page=faucet">Faucet</a>
+                </li>
+				<li class="nav-item <?php echo ($page == 'level_system') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="admin.php?page=level_system">Level settings</a>
                 </li>
 			
                 <li class="nav-item dropdown">
@@ -416,6 +419,86 @@ $getMinWithdrawalGateway = $mysqli->query("SELECT value FROM settings WHERE name
     
 <?php
             break;
+			
+		case 'level_system':
+            // Users oldal tartalma
+            echo "<h1>Bonus settings</h1>";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $level_system = $mysqli->real_escape_string($_POST['level_system']);
+    $bonusmaxlevel = $mysqli->real_escape_string($_POST['bonusmaxlevel']);
+    $bonuxlevelxp = $mysqli->real_escape_string($_POST['bonuxlevelxp']);
+    $bonuslevelvalue = $mysqli->real_escape_string($_POST['bonuslevelvalue']);
+	$xpreward = $mysqli->real_escape_string($_POST['xpreward']);
+
+    // Frissítsd a settings táblát a beállításokkal
+    $updatelevel_system = "UPDATE settings SET value = '$level_system' WHERE id = 31";
+    $updatebonusmaxlevel = "UPDATE settings SET value = '$bonusmaxlevel' WHERE id = 33";
+    $updatebonuxlevelxp = "UPDATE settings SET value = '$bonuxlevelxp' WHERE id = 34";
+    $updatebonuslevelvalue = "UPDATE settings SET value = '$bonuslevelvalue' WHERE id = 35";
+	$updatexpreward = "UPDATE settings SET value = '$xpreward' WHERE id = 36";
+
+    if (
+        $mysqli->query($updatelevel_system) === TRUE &&
+        $mysqli->query($updatebonusmaxlevel) === TRUE &&
+        $mysqli->query($updatebonuxlevelxp) === TRUE &&
+        $mysqli->query($updatebonuslevelvalue) === TRUE &&
+        $mysqli->query($updatexpreward) === TRUE
+    ) {
+        // Sikeres frissítés után visszairányítás a dashboard.php oldalra
+        echo "<div class='alert alert-success' role='alert'>Successful update!</div>";
+        
+    } else {
+        echo "Hiba a beállítások frissítése közben: " . $mysqli->error;
+    }
+}
+
+// Lekérdezés a min_reward értékének lekéréséreű
+$getlevelsystem = $mysqli->query("SELECT value FROM settings WHERE name = 'level_system' LIMIT 1")->fetch_assoc()['value'];
+
+$getbonusmaxlevel = $mysqli->query("SELECT value FROM settings WHERE name = 'bonusmaxlevel' LIMIT 1")->fetch_assoc()['value'];
+
+// Lekérdezés a max_reward értékének lekérésére
+$getbonuxlevelxp = $mysqli->query("SELECT value FROM settings WHERE name = 'bonuxlevelxp' LIMIT 1")->fetch_assoc()['value'];
+
+// Lekérdezés a max_reward értékének lekérésére
+$getbonuslevelvalue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonuslevelvalue' LIMIT 1")->fetch_assoc()['value'];
+
+$getxpreward = $mysqli->query("SELECT value FROM settings WHERE name = 'xpreward' LIMIT 1")->fetch_assoc()['value'];
+
+?>
+<div class="container mt-5">
+     <form method="post" action="?page=level_system">
+	    <div class="form-group">
+            <label for="level_system">Level Status :</label>
+            <select class="form-control" id="level_system" name="level_system">
+				<option value="on" <?php if($getlevelsystem == "on") echo "selected"; ?>>On</option>
+				<option value="off" <?php if($getlevelsystem == "off") echo "selected"; ?>>Off</option>
+			</select>
+        </div>
+        <div class="form-group">
+            <label for="bonusmaxlevel">Maximum Level: </label>
+            <input type="text" class="form-control" id="bonusmaxlevel" name="bonusmaxlevel" value="<?php echo $getbonusmaxlevel; ?>">
+        </div>
+        <div class="form-group">
+            <label for="bonuxlevelxp">XP/Level Up: (example: 20)</label>
+            <input type="text" class="form-control" id="bonuxlevelxp" name="bonuxlevelxp" value="<?php echo $getbonuxlevelxp; ?>">
+        </div>
+        <div class="form-group">
+            <label for="bonuslevelvalue">Bonus % value every level up (example: 0.1):</label>
+            <input type="text" class="form-control" id="bonuslevelvalue" name="bonuslevelvalue" value="<?php echo $getbonuslevelvalue; ?>">
+        </div>
+		        <div class="form-group">
+            <label for="xpreward">Reward XP every Faucet:</label>
+            <input type="text" class="form-control" id="xpreward" name="xpreward" value="<?php echo $getxpreward; ?>">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+    
+<?php
+            break;
+			
+			
 case 'duplicate_check':
     // Banned address hozzáadása
 
@@ -540,7 +623,6 @@ case 'user_list':
         echo "Error: " . $mysqli->error;
     }
     break;
-
         case 'logout':
 				 // Munkamenet törlése a felhasználó kijelentkeztetésekor
 				session_unset();

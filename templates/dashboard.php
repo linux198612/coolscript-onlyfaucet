@@ -1,9 +1,12 @@
 <?php
 include("header.php");
 
+if($levelStatus == "on"){
 $currentLevel = $user['level'];
 $currentXP = $user['xp'];
-$bonusPercentage = $currentLevel * 0.1;
+$bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonuslevepup' LIMIT 1")->fetch_assoc()['value'];
+$bonusPercentage = $currentLevel * $bonusValue;
+}
 ?>
 
 <div class="container">
@@ -12,6 +15,7 @@ $bonusPercentage = $currentLevel * 0.1;
         <img src="https://via.placeholder.com/300x250/404040/FFFFFF?text=300x250" alt="Banner Placeholder">
 		<br>
 		<?php
+		if($levelStatus == "on"){
 		                        if ($currentLevel >= $maxLevel) {
                             echo "<p>Max Level Reached: " . $maxLevel . "</p>";
                         } else {
@@ -32,6 +36,7 @@ $bonusPercentage = $currentLevel * 0.1;
 							}
 
 							echo "Level bonus: " . $bonusPercentage . "%";
+		}
 		?>		
         </div>
         <div class="col-sm-8 d-flex justify-content-center align-items-center">
