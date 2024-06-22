@@ -204,10 +204,11 @@ $bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonusleve
         <img src="images/zerlogo.png" class="logo logo-5" alt="ZeroCoin Logo">
     </div>
 
-    <nav class="navbar navbar-expand-lg"> <!-- Add the "navbar-expand-lg" class -->
+    <nav class="navbar navbar-expand-lg">
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto"> <!-- Center the menu items -->
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link" href="<?php echo $Website_Url;?>">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -216,14 +217,26 @@ $bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonusleve
         <h2>Claim your free cryptocurrency today!</h2>
     </div>
 
-    <div class="login-form">
-        <h3>Login</h3>
-        <div><?php echo $alertForm ?></div>
-        <form method="post" action="">
-                    <input class="form-control" type="text" placeholder="Enter your Zerocoin Address" name="address" value="<?php echo htmlspecialchars($Address); ?>" autofocus>
-                    <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>"/>
-            <button type="submit">Login</button>
-        </form>
+    <!-- Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div><?php echo $alertForm ?></div>
+                    <form method="post" action="">
+                        <input class="form-control" type="text" placeholder="Enter your Zerocoin Address" name="address" value="<?php echo htmlspecialchars($Address); ?>" autofocus>
+                        <input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>"/>
+                        <button type="submit" class="btn btn-primary mt-3">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="container promo-section">
@@ -322,5 +335,10 @@ $bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonusleve
     <div class="footer">
     <p>&copy; <?php echo date('Y'); ?> <a href="./"><?php echo $faucetName; ?></a>. All Rights Reserved. Version: <?php echo $version; ?><br> Powered by <a href="https://coolscript.hu">CoolScript</a></p>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 </body>
 </html>

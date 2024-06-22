@@ -623,14 +623,14 @@ case 'user_list':
         echo "Error: " . $mysqli->error;
     }
     break;
-        case 'logout':
-				 // Munkamenet törlése a felhasználó kijelentkeztetésekor
-				session_unset();
-				session_destroy();
+    case 'logout':
+        // Munkamenet törlése a felhasználó kijelentkeztetésekor
+       session_unset();
+       session_destroy();
 
-				// Átirányítás a bejelentkezési oldalra vagy más elérhető oldalra
-				// header("Location: admin.php");
-            break;
+       // Átirányítás a bejelentkezési oldalra vagy más elérhető oldalra
+       // header("Location: admin.php");
+   break;
         default:
             // Ha az URL nem egyezik meg semmelyik oldal nevével
             echo "<h1>404 - Page not found</h1>";
