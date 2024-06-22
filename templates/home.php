@@ -208,7 +208,7 @@ $bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonusleve
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link" href="<?php echo $Website_Url;?>">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login / Register</a></li>
             </ul>
         </div>
     </nav>
@@ -339,6 +339,6 @@ $bonusValue = $mysqli->query("SELECT value FROM settings WHERE name = 'bonusleve
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
+
 </body>
 </html>
